@@ -3,3 +3,10 @@ obj/
 *.depend
 *.layout
 *.*~
+*.hex
+*.sln
+*.suo
+*.bin
+*.ncb
+*.vcproj
+*.vcproj.*

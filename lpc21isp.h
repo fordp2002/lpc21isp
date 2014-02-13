@@ -35,6 +35,12 @@ Portions Copyright (c) by Aeolus Development 2004 http://www.aeolusdevelopment.c
 #if defined(_WIN32) && !defined(__CYGWIN__)
 #define COMPILE_FOR_WINDOWS
 #define COMPILED_FOR "Windows"
+
+#ifdef _MSC_VER
+# pragma warning(disable : 4996)
+#endif
+
+//#define HIGHRES_TIMER
 #elif defined(__CYGWIN__)
 #define COMPILE_FOR_CYGWIN
 #define COMPILED_FOR "Cygwin"
@@ -186,7 +192,7 @@ typedef struct
 
     unsigned char HalfDuplex;           // Only used for LPC Programming
     unsigned char WriteDelay;
-    unsigned char DetectOnly;
+	 unsigned char DetectOnly;
     unsigned char WipeDevice;
     unsigned char Verify;
     int           DetectedDevice;       /* index in LPCtypes[] array */
@@ -201,7 +207,8 @@ typedef struct
     BINARY *FileContent;
     BINARY *BinaryContent;              /**< Binary image of the                  */
                                           /* microcontroller's memory.            */
-    unsigned long BinaryLength;
+    unsigned long Blind;
+	 unsigned long BinaryLength;
     unsigned long BinaryOffset;
     unsigned long StartAddress;
     unsigned long BinaryMemSize;
